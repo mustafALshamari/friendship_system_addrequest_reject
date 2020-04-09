@@ -79,7 +79,7 @@ We Assume that you are **Authnticated** and did not **forget!! t**o use **Token*
 log in and use this token for every request as **authorization **
 
 ```bash
-http://127.0.0.1:8000/api/adduser/5        * 5 is random id to add as friend
+http://127.0.0.1:8000/api/adduser/5        * 5 is choosed id to add as friend
 
 ```
 in this case , the **Authenticated **user is sending **Add Friend** to user with id = 5.
@@ -90,7 +90,7 @@ in the second function we are authinticted and we request from sender
 with id = 2 
 
 ```bash
-http://127.0.0.1:8000/api/acceptNewFriend/2        * 2 is random sender if
+http://127.0.0.1:8000/api/acceptNewFriend/2        * 2 is sender id
 
 ```
 
@@ -100,7 +100,7 @@ http://127.0.0.1:8000/api/acceptNewFriend/2        * 2 is random sender if
 with id = 2 
 
 ```bash
-http://127.0.0.1:8000/api/reject/2        * 2 is random sender if
+http://127.0.0.1:8000/api/reject/2        * 2 is sender id
 
 ```
 
