@@ -35,7 +35,8 @@ php artisan migrate
 then you start your project 
 
 ``` bash
-php artisan serve```
+php artisan serve
+```
 
 
 then simply by using **POSTMAN** for example to deal with the **APIs**
