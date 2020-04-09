@@ -1,79 +1,118 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Friendship system like Facebook
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+This is a simple application builded with Laravel and Passport for API Authntication , You are able to send and accept request as well reject unwanted friend invitaion .
 
-## About Laravel
+## Getting started
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Launch the project 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+*(Assuming you've [installed Laravel](https://laravel.com/docs/5.5/installation))*
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Assuming that you have background about running laravel projects with artisan or on your localhost , but here we use artisan , after pulling this project you may get inside the project directory .
 
-## Learning Laravel
+You need to **Configure Your Database** to go to .**env** or in **Config** file 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Then **seed** your **Database** with users 
 
-## Laravel Sponsors
+###### *Command below will seed your **User** table with **5** users
+```
+php artisan db:seed --class=UsersTableSeeder    --5 users will be seeded
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
 
-## Contributing
+##### Password for any User will be password 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Then you import you migration files by running 
 
-## Security Vulnerabilities
+```
+php artisan migrate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+then you start your project 
 
-## License
+``` bash
+php artisan serve```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+then simply by using **POSTMAN** for example to deal with the **APIs**
+I need to mention that in this app we have **Passport auth Package ** installed ,  so you may need previous knowlege inorder to use it , 
+
+First you may face we you want to log in , is laravel ask you about secret key is not there so you may run this line below 
+```bash
+$ php artisan passport:client --personal
+
+```
+
+***Now Let Us Go And Start Using The App! ***
+
+
+
+### Register new User 
+
+You may want to Signup , here I show the route , 
+as well you can find it in **routes/api.php**
+
+```bash
+http://127.0.0.1:8000/api/regitser      
+
+```
+```bash
+keys you may need to register new user 
+
+name
+email   
+password 
+c_password 
+
+```
+
+
+
+### Add a Friend 
+
+We Assume that you are **Authnticated** and did not **forget!! t**o use **Token** after 
+log in and use this token for every request as **authorization **
+
+```bash
+http://127.0.0.1:8000/api/adduser/5        * 5 is random id to add as friend
+
+```
+in this case , the **Authenticated **user is sending **Add Friend** to user with id = 5.
+
+### Accept Friend 
+
+in the second function we are authinticted and we request from sender 
+with id = 2 
+
+```bash
+http://127.0.0.1:8000/api/acceptNewFriend/2        * 2 is random sender if
+
+```
+
+### Reject Friend 
+
+ we are authinticted and we reject the unwanted sender 
+with id = 2 
+
+```bash
+http://127.0.0.1:8000/api/reject/2        * 2 is random sender if
+
+```
+
+The request in deleted form the Frienships table completely ,
+and in this way we have simply took an idea about how things works 
+with social media application .
+
+thank you ,
+
+**Mustafa al-shamari**
+
+
+
+
+
+
